@@ -27,30 +27,8 @@
     <!-- Local Song Autoplay Audio (Muted initially for policy compliance) -->
     <audio id="backgroundMusic" loop autoplay muted>
         <source src="123.mp3" type="audio/mpeg">
-       
     </audio>
 
-    <!-- Audio Controls (Toggle for mute/unmute and play/pause) -->
-
-<button id="audioToggle" style="
-    position: fixed; 
-    bottom: 20px; 
-    left: 20px; 
-    z-index: 100; 
-    background: linear-gradient(45deg, #ff6b35, #ffd700); 
-    border: none; 
-    border-radius: 50%; 
-    width: 70px; 
-    height: 70px; 
-    cursor: pointer; 
-    font-size: 28px; 
-    color: white; 
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
-">
-    🔊
-</button>
-
-    
     <canvas id="fireworks-canvas"></canvas>
     <canvas id="stars-canvas"></canvas>
     <div class="clouds"></div>
@@ -121,6 +99,7 @@
     <section id="ravan">
         <h2>🔥 रावण: अधर्म का राजा 🔥</h2>
         <div class="image-gallery" id="ravanGallery">
+            <StartFragment>
             <img src="ravan1.jpg" alt="Ravan Effigy" class="gallery-img ravan-pose">
             <img src="ravan2.jpg" alt="Angry Ravan" class="gallery-img">
         </div>
@@ -199,51 +178,37 @@
             </ul>
             <p>इस त्योहार पर परिवार के साथ खुशियां मनाएं, मिठाई बांटें और राम राज्य का सपना देखें।</p>
         </div>
-       
     </section>
 
     <script src="script.js"></script>
     <script>
-        // Audio Functionality (Start on first interaction)
+        // Audio Functionality (Start on first touch or click)
         const audio = document.getElementById('backgroundMusic');
-        const audioToggle = document.getElementById('audioToggle');
-        let isPlaying = false;
+        let hasInteracted = false;
 
-        // Start audio on first user interaction (any click)
-        document.addEventListener('click', function startAudio() {
-            audio.play().catch(e => console.log('Autoplay prevented:', e));
-            if (!audio.muted) {
-                audio.muted = false; // Ensure unmuted
+        // Start audio on first user interaction (click or touch)
+        function startAudio() {
+            if (!hasInteracted) {
+                audio.muted = false; // Unmute
+                audio.play().catch(e => console.log('Autoplay prevented:', e));
+                hasInteracted = true;
+                // Remove event listeners after first interaction
+                document.removeEventListener('click', startAudio);
+                document.removeEventListener('touchstart', startAudio);
             }
-            isPlaying = true;
-            audioToggle.textContent = '🔊'; // Show volume icon
-            document.removeEventListener('click', startAudio); // Remove listener after first click
-        }, { once: true });
+        }
 
-        // Toggle functionality
-        audioToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent triggering the start listener
-            if (audio.paused || audio.muted) {
-                audio.play().catch(e => console.log('Play failed:', e));
-                audio.muted = false;
-                isPlaying = true;
-                audioToggle.textContent = '🔊';
-            } else {
-                audio.pause();
-                audio.muted = true;
-                isPlaying = false;
-                audioToggle.textContent = '🔇';
-            }
-        });
+        // Add listeners for both click and touchstart
+        document.addEventListener('click', startAudio);
+        document.addEventListener('touchstart', startAudio);
 
         // Optional: Resume on visibility change (if tab is backgrounded)
         document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && isPlaying) {
+            if (!document.hidden && hasInteracted) {
                 audio.play().catch(e => {});
             }
         });
     </script>
 </body>
-
 
 </html>
