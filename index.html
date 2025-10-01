@@ -31,8 +31,26 @@
     </audio>
 
     <!-- Audio Controls (Toggle for mute/unmute and play/pause) -->
-    <button id="audioToggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; background: linear-gradient(45deg, #ff6b35, #ffd700); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; color: white; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);">🔊</button>
 
+<button id="audioToggle" style="
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    z-index: 100; 
+    background: linear-gradient(45deg, #ff6b35, #ffd700); 
+    border: none; 
+    border-radius: 50%; 
+    width: 70px; 
+    height: 70px; 
+    cursor: pointer; 
+    font-size: 28px; 
+    color: white; 
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+">
+    🔊
+</button>
+
+    
     <canvas id="fireworks-canvas"></canvas>
     <canvas id="stars-canvas"></canvas>
     <div class="clouds"></div>
@@ -226,5 +244,6 @@
         });
     </script>
 </body>
+
 
 </html>
