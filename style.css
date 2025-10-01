@@ -1,0 +1,900 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #ff6b35, #ffd700); 
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite; /* Animated gradient for festive vibe */
+    color: #fff; 
+    overflow-x: hidden;
+    position: relative;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.light { 
+    background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fad0c4, #ffd700); 
+    animation: gradientShift 10s ease infinite; 
+    color: #333; 
+}
+
+header { 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    background: rgba(0,0,0,0.7); 
+    padding: 10px 20px; 
+    text-align: right; 
+    z-index: 1000; /* Increased z-index to stay above all elements */
+    backdrop-filter: blur(10px); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(255,107,53,0.3); /* Neon shadow */
+}
+
+.sidebar { 
+    display: flex; 
+    gap: 10px; 
+}
+
+.sidebar button { 
+    background: rgba(255,255,255,0.2); 
+    color: white; 
+    border: 1px solid #ffd700; 
+    padding: 8px 12px; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    font-size: 12px; 
+    transition: all 0.3s ease; 
+    box-shadow: 0 0 10px rgba(255,215,0,0.5); 
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar button::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: -100%; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); 
+    transition: left 0.5s;
+}
+
+.sidebar button:hover::before { 
+    left: 100%; 
+}
+
+.sidebar button:hover { 
+    background: #ffd700; 
+    transform: scale(1.05) translateY(-2px); 
+    box-shadow: 0 0 20px #ffd700, 0 4px 15px rgba(255,215,0,0.4);
+}
+
+#toggle { 
+    background: linear-gradient(45deg, #ff6b35, #ffd700); 
+    color: white; 
+    border: none; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    border-radius: 25px; 
+    font-size: 14px; 
+    box-shadow: 0 0 15px #ff6b35; 
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#toggle::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: -100%; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); 
+    transition: left 0.5s;
+}
+
+#toggle:hover::before { 
+    left: 100%; 
+}
+
+#toggle:hover { 
+    transform: rotate(180deg) scale(1.05); 
+    box-shadow: 0 0 25px #ffd700;
+}
+
+section { 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 80px 20px 40px; /* Added top padding for fixed header */
+    opacity: 0; 
+    transform: translateY(50px); 
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+    position: relative;
+}
+
+section.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+section:not(.active) { 
+    display: none; 
+}
+
+h1, h2 { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: clamp(2.5em, 6vw, 5em); 
+    text-align: center; 
+    margin-bottom: 20px; 
+    text-shadow: 0 0 30px #ffd700, 0 0 40px #ff6b35; 
+    letter-spacing: 3px; 
+    animation: neonGlow 2s ease-in-out infinite alternate;
+    position: relative;
+}
+
+@keyframes neonGlow { 
+    from { 
+        text-shadow: 0 0 20px #ffd700, 0 0 30px #ff6b35, 0 0 40px rgba(255,215,0,0.5); 
+    } 
+    to { 
+        text-shadow: 0 0 40px #ffd700, 0 0 50px #ff6b35, 0 0 60px rgba(255,215,0,0.7); 
+    } 
+}
+
+p { 
+    font-size: 1.2em; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    max-width: 700px; 
+    line-height: 1.6; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
+}
+
+img { 
+    max-width: 300px; 
+    height: auto; 
+    border-radius: 20px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,0,0.5); 
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.character-img, .victory-img, .battle-img, .gallery-img { 
+    transition: transform 0.5s ease; 
+}
+
+img:hover { 
+    transform: scale(1.1) rotate(3deg); 
+    box-shadow: 0 12px 24px rgba(0,0,0,0.6), 0 0 40px #ffd700, 0 0 50px rgba(255,107,53,0.5);
+}
+
+button { 
+    background: linear-gradient(45deg, #ff6b35, #ffd700); 
+    color: white; 
+    border: none; 
+    padding: 15px 40px; 
+    font-size: 1.1em; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 20px rgba(255,215,0,0.5);
+    font-family: 'Poppins', sans-serif; 
+    position: relative; 
+    overflow: hidden;
+    animation: buttonPulse 2s infinite;
+    z-index: 10; /* Ensure buttons are above decorative elements */
+}
+
+@keyframes buttonPulse { 
+    0% { 
+        box-shadow: 0 0 0 0 rgba(255,215,0,0.7), 0 4px 15px rgba(255,107,53,0.4); 
+    } 
+    70% { 
+        box-shadow: 0 0 0 20px rgba(255,215,0,0), 0 8px 25px rgba(255,107,53,0.6); 
+    } 
+    100% { 
+        box-shadow: 0 0 0 0 rgba(255,215,0,0), 0 4px 15px rgba(255,107,53,0.4); 
+    } 
+}
+
+button::before { 
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: -100%; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); 
+    transition: left 0.5s;
+}
+
+button:hover::before { 
+    left: 100%; 
+}
+
+button:hover { 
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.7), 0 0 30px #ffd700, 0 0 40px rgba(255,107,53,0.5);
+}
+
+/* Enhanced Diyas (Modernized with better positioning) */
+.diyas-container { 
+    position: fixed; /* Changed to fixed for better coverage without overlap */
+    bottom: 0; 
+    width: 100%; 
+    display: flex; 
+    justify-content: space-around; 
+    z-index: 1; /* Low z-index to stay below content */
+    pointer-events: none; /* Prevent interference with buttons */
+    padding-bottom: 20px;
+}
+
+.home-diyas, .final-diyas { 
+    justify-content: space-between; 
+}
+
+.diya { 
+    width: 60px; 
+    height: 80px; 
+    background: linear-gradient(to bottom, #ff8c00, #d2691e, #8b4513); 
+    border-radius: 30px 30px 10px 10px; 
+    position: relative; 
+    animation: flicker 2s infinite alternate, float 3s ease-in-out infinite, waxMelt 10s linear infinite;
+    margin: 0 10px; 
+    box-shadow: 0 0 20px #ff4500, inset 0 2px 4px rgba(255,255,255,0.2);
+}
+
+.enhanced-diya::after { /* Flame */
+    content: ''; 
+    position: absolute; 
+    top: -10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 15px; 
+    height: 25px; 
+    background: linear-gradient(to top, #ff4500, #ffff00, #ffd700); 
+    border-radius: 50% 50% 0 0; 
+    animation: flameFlicker 0.5s infinite alternate, move 1s linear infinite;
+    box-shadow: 0 0 10px #ffff00, 0 0 15px #ff4500;
+}
+
+@keyframes flameFlicker { 
+    0% { 
+        transform: translateX(-50%) scaleY(1) rotate(0deg); 
+        opacity: 1; 
+        box-shadow: 0 0 5px #ffff00; 
+    } 
+    100% { 
+        transform: translateX(-52%) scaleY(1.2) rotate(2deg); 
+        opacity: 0.9; 
+        box-shadow: 0 0 15px #ff4500; 
+    } 
+}
+
+@keyframes move { 
+    0% { 
+        transform: translateX(-50%) rotateZ(1deg); 
+    } 
+    100% { 
+        transform: translateX(-50%) rotateZ(-1deg); 
+    } 
+}
+
+@keyframes waxMelt { 
+    0% { 
+        height: 80px; 
+    } 
+    100% { 
+        height: 75px; 
+    } 
+} /* Subtle melt */
+
+.diya.floating { 
+    position: fixed; 
+    top: 20%; 
+    right: 10%; 
+    animation: floatRandom 4s ease-in-out infinite; 
+    z-index: 5; 
+}
+
+.diya.extra { 
+    animation-delay: 1s; 
+}
+
+.diya.extra2 { 
+    animation-delay: 2s; 
+}
+
+.diya::before { 
+    content: ''; 
+    position: absolute; 
+    top: -15px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 20px; 
+    height: 30px; 
+    background: #ffd700; 
+    border-radius: 50% 50% 0 0; 
+    box-shadow: inset 2px 3px 4px rgba(0,0,0,0.2);
+}
+
+@keyframes flicker { 
+    0%, 100% { 
+        box-shadow: 0 0 10px #ff8c00, inset 0 0 5px rgba(255,255,255,0.3); 
+    } 
+    50% { 
+        box-shadow: 0 0 30px #ff4500, inset 0 0 10px #ffd700; 
+    } 
+}
+
+@keyframes float { 
+    0%, 100% { 
+        transform: translateY(0px); 
+    } 
+    50% { 
+        transform: translateY(-15px); 
+    } 
+}
+
+@keyframes floatRandom { 
+    0% { 
+        transform: translate(0, 0) rotate(0deg); 
+    } 
+    25% { 
+        transform: translate(20px, -20px) rotate(5deg); 
+    } 
+    50% { 
+        transform: translate(0, -40px) rotate(0deg); 
+    } 
+    75% { 
+        transform: translate(-20px, -20px) rotate(-5deg); 
+    } 
+    100% { 
+        transform: translate(0, 0) rotate(0deg); 
+    } 
+}
+
+/* Floating Lanterns (Extra Festive, adjusted z-index) */
+.lanterns-container { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    pointer-events: none; 
+    z-index: -1; 
+}
+
+.lantern { 
+    position: absolute; 
+    width: 20px; 
+    height: 40px; 
+    background: radial-gradient(circle, #ffd700, #ff8c00); 
+    border-radius: 50%; 
+    animation: floatUp 6s linear infinite; 
+    box-shadow: 0 0 20px #ffd700, 0 0 30px rgba(255,215,0,0.3);
+}
+
+.lantern:nth-child(1) { 
+    left: 10%; 
+    animation-delay: 0s; 
+}
+
+.lantern:nth-child(2) { 
+    left: 50%; 
+    animation-delay: 2s; 
+}
+
+.lantern:nth-child(3) { 
+    left: 80%; 
+    animation-delay: 4s; 
+}
+
+@keyframes floatUp { 
+    0% { 
+        top: 100%; 
+        opacity: 0; 
+        transform: scale(0.5); 
+    } 
+    10% { 
+        opacity: 1; 
+        transform: scale(1); 
+    } 
+    90% { 
+        opacity: 1; 
+    } 
+    100% { 
+        top: -10%; 
+        opacity: 0; 
+        transform: scale(1.2); 
+    } 
+}
+
+/* Added Fireworks for Dussehra Victory */
+.fireworks { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    pointer-events: none; 
+    z-index: 2; /* Above lanterns but below content */
+}
+
+.firework { 
+    position: absolute; 
+    width: 4px; 
+    height: 4px; 
+    background: #ffd700; 
+    border-radius: 50%; 
+    animation: explode 2s ease-out forwards;
+}
+
+@keyframes explode { 
+    0% { 
+        opacity: 1; 
+        transform: scale(0) translate(0, 0); 
+    } 
+    50% { 
+        opacity: 1; 
+        transform: scale(1) translate(var(--dx), var(--dy)); 
+    } 
+    100% { 
+        opacity: 0; 
+        transform: scale(0) translate(var(--dx), var(--dy)); 
+    } 
+}
+
+/* Image Gallery (Modern grid) */
+.image-gallery { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px; 
+    justify-content: center; 
+    margin: 20px 0; 
+    position: relative; 
+    max-width: 800px;
+}
+
+.gallery-img { 
+    width: 100%; 
+    animation: slideIn 1s ease-out; 
+    transform: translateZ(0); 
+    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+}
+
+@keyframes slideIn { 
+    from { 
+        opacity: 0; 
+        transform: translateX(-50px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    } 
+}
+
+/* Boxes - Enhanced Glassmorphism */
+.quote-box, .fact-box { 
+    background: rgba(255,255,255,0.1); 
+    padding: 25px; 
+    border-radius: 25px; 
+    margin: 20px 0; 
+    backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255,215,0,0.3); 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.quote-box:hover, .fact-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.2);
+}
+
+.quote-box blockquote { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.5em; 
+    font-style: italic; 
+    text-align: center; 
+    margin-bottom: 10px; 
+    color: #ffd700; 
+}
+
+.fact-box ul { 
+    list-style: none; 
+    padding: 0; 
+}
+
+.fact-box li { 
+    margin: 10px 0; 
+    padding-left: 20px; 
+    position: relative; 
+    transition: color 0.3s ease;
+}
+
+.fact-box li:hover {
+    color: #ffd700;
+}
+
+.fact-box li::before { 
+    content: '🪔'; 
+    position: absolute; 
+    left: 0; 
+    animation: spin 2s linear infinite; 
+}
+
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } 
+    to { 
+        transform: rotate(360deg); 
+    } 
+}
+
+/* Battle Animations (Enhanced with more Dussehra elements) */
+.battle-section { 
+    position: relative; 
+}
+
+.battle-arena { 
+    position: relative; 
+    width: 100%; 
+    height: 50vh; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 20px 0; 
+}
+
+.battle-img { 
+    position: relative; 
+    z-index: 2; 
+    max-width: 250px; 
+    filter: drop-shadow(0 0 10px #ffd700); 
+}
+
+.ram-battle { 
+    animation: readyPose 1s ease-in-out infinite; 
+}
+
+@keyframes readyPose { 
+    0%, 100% { 
+        transform: rotate(0); 
+    } 
+    50% { 
+        transform: rotate(-10deg) scale(1.05); 
+    } 
+}
+
+.ravan-battle { 
+    animation: menacingPose 1s ease-in-out infinite; 
+}
+
+@keyframes menacingPose { 
+    0%, 100% { 
+        transform: scale(1); 
+        filter: hue-rotate(0deg); 
+    } 
+    50% { 
+        transform: scale(1.1); 
+        filter: hue-rotate(20deg) brightness(1.2); 
+    } 
+}
+
+.arrow-trail { 
+    position: absolute; 
+    top: 50%; 
+    left: 20%; 
+    width: 4px; 
+    height: 60px; 
+    background: linear-gradient(to right, transparent, #ffd700, transparent); 
+    transform: rotate(45deg); 
+    opacity: 0; 
+    z-index: 3; 
+    box-shadow: 0 0 10px #ffd700;
+}
+
+@keyframes shootArrow { 
+    from { 
+        left: 25%; 
+        opacity: 1; 
+        transform: rotate(45deg) translateX(0) scale(1); 
+    } 
+    to { 
+        left: 70%; 
+        opacity: 0; 
+        transform: rotate(45deg) translateX(300px) scale(1.5); 
+    } 
+}
+
+.ravan-fall { 
+    animation: fallAndBurn 3s ease-in forwards; 
+}
+
+@keyframes fallAndBurn { 
+    0% { 
+        transform: translateY(0); 
+        opacity: 1; 
+        filter: brightness(1); 
+    } 
+    70% { 
+        transform: translateY(100px) rotate(90deg); 
+        filter: brightness(2) sepia(0.5); 
+    } 
+    100% { 
+        transform: translateY(200px) rotate(180deg); 
+        opacity: 0; 
+        filter: brightness(3) sepia(1) hue-rotate(180deg); 
+    } 
+}
+
+.story-steps { 
+    text-align: center; 
+    font-size: 1.1em; 
+    background: rgba(0,0,0,0.5); 
+    padding: 20px; 
+    border-radius: 15px; 
+    box-shadow: 0 0 20px rgba(255,107,53,0.5); 
+    margin: 20px 0;
+}
+
+/* Victory (Added confetti-like sparks) */
+.ram-victory { 
+    animation: victoryDance 2s ease-in-out infinite; 
+}
+
+@keyframes victoryDance { 
+    0%, 100% { 
+        transform: rotate(0) translateY(0); 
+    } 
+    25% { 
+        transform: rotate(5deg) translateY(-10px) scale(1.05); 
+    } 
+    75% { 
+        transform: rotate(-5deg) translateY(-10px) scale(1.05); 
+    } 
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffd700;
+    animation: confettiFall 3s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Clouds & Parallax (Modern SVG with better animation) */
+.clouds { 
+    position: fixed; 
+    top: 0; 
+    width: 200%; 
+    height: 100%; 
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23ffd700" opacity="0.1" d="M0 50 Q125 0 250 50 T500 50 T750 50 T1000 50"/></svg>') repeat-x; 
+    animation: moveClouds 20s linear infinite; 
+    z-index: -1; 
+}
+
+@keyframes moveClouds { 
+    from { 
+        background-position: 0 0; 
+    } 
+    to { 
+        background-position: -1000px 0; 
+    } 
+}
+
+/* Wishes & Share */
+.wishes-list { 
+    background: rgba(255,255,255,0.1); 
+    padding: 25px; 
+    border-radius: 25px; 
+    margin: 20px 0; 
+    max-width: 600px; 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
+    transition: all 0.3s ease;
+}
+
+.wishes-list:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.share-buttons { 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center;
+}
+
+.share-buttons button { 
+    background: linear-gradient(45deg, #4CAF50, #8BC34A); 
+    box-shadow: 0 0 20px #4CAF50; 
+    padding: 12px 25px;
+    font-size: 1em;
+}
+
+footer { 
+    background: rgba(0,0,0,0.8); 
+    text-align: center; 
+    padding: 20px; 
+    box-shadow: 0 -4px 20px rgba(255,107,53,0.3); 
+    margin-top: auto;
+}
+
+/* Stars Canvas (Enhanced in JS) */
+#stars-canvas { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: -2; 
+    pointer-events: none; 
+}
+
+/* Responsive */
+@media (max-width: 768px) { 
+    .image-gallery { 
+        grid-template-columns: 1fr; 
+    } 
+    .sidebar { 
+        flex-wrap: wrap; 
+        justify-content: center;
+    } 
+    .share-buttons { 
+        flex-direction: column; 
+        align-items: center;
+    } 
+    .diyas-container {
+        flex-direction: column;
+        align-items: center;
+        bottom: 10px;
+    }
+    .diya {
+        margin: 5px;
+    }
+}
+
+/* Real Arrow Styles (Enhanced) */
+.arrow {
+    position: absolute; 
+    top: 50%; 
+    left: 20%; 
+    z-index: 3; 
+    opacity: 0; 
+    transform: translateY(-50%);
+    animation: none; /* JS se trigger hoga */
+}
+
+.arrow-shaft {
+    width: 100px; 
+    height: 4px; 
+    background: linear-gradient(to right, #ffd700, #ff8c00); 
+    border-radius: 2px; 
+    box-shadow: 0 0 10px #ffd700;
+}
+
+.arrow-head {
+    position: absolute; 
+    right: -10px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent; 
+    border-right: 15px solid transparent;
+    border-bottom: 10px solid #ffd700; 
+    box-shadow: 0 0 10px #ffd700;
+}
+
+@keyframes shootArrow {
+    0% { 
+        left: 25%; 
+        opacity: 1; 
+        transform: translateY(-50%) scale(1); 
+        box-shadow: 0 0 5px #ffd700;
+    }
+    50% { 
+        left: 50%; 
+        opacity: 1; 
+        transform: translateY(-50%) scale(1.2); 
+        box-shadow: 0 0 20px #ffd700, 0 0 30px #ff4500;
+    }
+    100% { 
+        left: 70%; 
+        opacity: 0; 
+        transform: translateY(-50%) scale(1.5) rotate(5deg); 
+        box-shadow: 0 0 30px #ffd700;
+    }
+}
+
+/* Sparks for Trail (Optional - JS se add honge) */
+.spark {
+    position: absolute; 
+    width: 3px; 
+    height: 3px; 
+    background: #ffd700; 
+    border-radius: 50%;
+    animation: sparkFade 1s ease-out forwards;
+}
+
+@keyframes sparkFade {
+    0% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: scale(0) translateY(-20px); 
+    }
+}
+
+/* Additional Dussehra Animations: Ravan Effigy Burn Effect */
+.ravan-effigy {
+    position: relative;
+    animation: burnEffect 4s ease-in forwards;
+}
+
+@keyframes burnEffect {
+    0% {
+        filter: brightness(1) sepia(0);
+        transform: scale(1);
+    }
+    50% {
+        filter: brightness(1.5) sepia(0.3) hue-rotate(20deg);
+        transform: scale(1.05);
+    }
+    100% {
+        filter: brightness(2) sepia(0.8) hue-rotate(180deg);
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Added Rangoli Pattern Animation (Background) */
+.rangoli {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);
+    border-radius: 50%;
+    animation: rangoliRotate 10s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes rangoliRotate {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}

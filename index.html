@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शुभ दशहरा 2025 - Kapish Kashyap की विजय उत्सव वेबसाइट</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Devanagari+Marathi:wght@400;700&family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="sidebar">
+            <button onclick="goToSection('home')">🏠 Home</button>
+            <button onclick="goToSection('ram')">🌟 राम</button>
+            <button onclick="goToSection('ravan')">🔥 रावण</button>
+            <button onclick="goToSection('battle')">⚔️ युद्ध</button>
+            <button onclick="goToSection('fireworks')">🎉 विजय</button>
+            <button onclick="goToSection('final')">✨ संदेश</button>
+        </nav>
+        <button id="toggle">🌙 Toggle Theme</button>
+    </header>
+
+    <!-- Local Song Autoplay Audio (Muted initially for policy compliance) -->
+    <audio id="backgroundMusic" loop autoplay muted>
+        <source src="123.mp3" type="audio/mpeg">
+       
+    </audio>
+
+    <!-- Audio Controls (Toggle for mute/unmute and play/pause) -->
+    <button id="audioToggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; background: linear-gradient(45deg, #ff6b35, #ffd700); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; color: white; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);">🔊</button>
+
+    <canvas id="fireworks-canvas"></canvas>
+    <canvas id="stars-canvas"></canvas>
+    <div class="clouds"></div>
+    <div class="lanterns-container">
+        <div class="lantern"></div>
+        <div class="lantern delay1"></div>
+        <div class="lantern delay2"></div>
+    </div>
+
+    <!-- Home / Intro -->
+    <section id="home" class="active">
+        <div class="diyas-container home-diyas">
+            <div class="diya left enhanced-diya"></div>
+            <div class="diya center enhanced-diya"></div>
+            <div class="diya right enhanced-diya"></div>
+            <div class="diya extra enhanced-diya"></div>
+            <div class="diya extra2 enhanced-diya"></div>
+        </div>
+        <h1>🪔 शुभ दशहरा 2025, Kapish! 🪔</h1>
+        <p class="intro-text">आइए अच्छाई की बुराई पर विजय का उत्सव मनाएं। दशहरा रामायण की उस महान घटना का प्रतीक है
+            जब
+            भगवान राम ने रावण का वध किया, जो अधर्म पर धर्म की जीत दर्शाता है। यह त्योहार हमें सिखाता है कि सत्य
+            हमेशा
+            विजयी होता है।</p>
+        <div class="fact-box">
+            <h3>दशहरा का महत्व:</h3>
+            <ul>
+                <li>राम ने 14 वर्ष वनवास काटा और लंका पर विजय प्राप्त की।</li>
+                <li>हर साल रावण के पुतले जलाए जाते हैं, बुराई के प्रतीक के रूप में।</li>
+                <li>यह नवरात्रि का समापन है, देवी दुर्गा की पूजा के बाद।</li>
+            </ul>
+        </div>
+        <button onclick="nextSection('home', 'ram')">कहानी शुरू करें</button>
+    </section>
+
+    <!-- Ram Introduction - Personalized Fact -->
+    <section id="ram">
+        <div class="diyas-container">
+            <div class="diya left enhanced-diya"></div>
+            <div class="diya right enhanced-diya"></div>
+            <div class="diya floating enhanced-diya"></div>
+        </div>
+        <h2>🌟 भगवान राम: धर्म के अवतार 🌟</h2>
+        <div class="image-gallery" id="ramGallery">
+            <img src="lordram.jpg" alt="Lord Ram" class="gallery-img ram-walk">
+            <img src="lordram1.jpg" alt="Ram Bow" class="gallery-img">
+        </div>
+        <p>भगवान राम अयोध्या के राजकुमार थे, जो मर्यादा पुरुषोत्तम कहलाते हैं। उन्होंने सीता माता की खोज में वनवास
+            स्वीकार किया और रावण से युद्ध लड़ा।</p>
+        <div class="quote-box">
+            <blockquote>"रघुकुल रीति सदा चली आई, प्राण जाए पर वचन न जाई।" – रामायण से</blockquote>
+            <p><em>"The tradition of Raghu's clan has always been this: Life may go, but a promise never
+                    breaks."</em>
+            </p>
+        </div>
+        <div class="fact-box">
+            <h3>राम के बारे में रोचक तथ्य:</h3>
+            <ul>
+                <li>राम को विष्णु का सातवां अवतार माना जाता है।</li>
+                <li>उनका धनुष 'श्रीराम धनुष' अजेय था।</li>
+                <li>राम राज्य आदर्श शासन का प्रतीक है। </li>
+            </ul>
+        </div>
+        <button onclick="nextSection('ram', 'ravan')">अगला: रावण का परिचय</button>
+    </section>
+
+    <!-- Ravan Introduction -->
+    <section id="ravan">
+        <h2>🔥 रावण: अधर्म का राजा 🔥</h2>
+        <div class="image-gallery" id="ravanGallery">
+            <img src="ravan1.jpg" alt="Ravan Effigy" class="gallery-img ravan-pose">
+            <img src="ravan2.jpg" alt="Angry Ravan" class="gallery-img">
+        </div>
+        <p>रावण लंका का शक्तिशाली राक्षस राजा था, जो विद्वान भी था लेकिन अहंकार ने उसे बर्बाद कर दिया। सीता का अपहरण
+            उसके पतन का कारण बना।</p>
+        <div class="quote-box">
+            <blockquote>"अहंकार का अंत हमेशा विनाश ही लाता है।" – दशहरा का संदेश</blockquote>
+            <p><em>"Ego always leads to destruction."</em></p>
+        </div>
+        <div class="fact-box">
+            <h3>रावण के बारे में:</h3>
+            <ul>
+                <li>उसके 10 सिर ज्ञान के 10 द्वारों का प्रतीक थे, लेकिन अधर्म ने उन्हें नष्ट किया।</li>
+                <li>रावण शिव भक्त था, लेकिन भक्ति में भी घमंड था।</li>
+                <li>दशहरा पर उसके पुतले जलाकर बुराई का नाश मनाया जाता है।</li>
+            </ul>
+        </div>
+        <button onclick="nextSection('ravan', 'battle')">महायुद्ध शुरू!</button>
+    </section>
+
+    <!-- Battle -->
+    <section id="battle" class="battle-section">
+        <div class="diyas-container">
+            <div class="diya left enhanced-diya"></div>
+            <div class="diya right enhanced-diya"></div>
+        </div>
+        <h2>⚔️ राम-रावण महायुद्ध ⚔️</h2>
+        <div class="battle-arena">
+            <img src="ramji.png!f305cw" alt="Ram" class="battle-img ram-battle">
+            <div class="arrow" id="arrow">
+                <div class="arrow-shaft"></div>
+                <div class="arrow-head"></div>
+            </div>
+            <img src="ravan.jpg" alt="Ravan" id="ravanBattle" class="battle-img ravan-battle">
+        </div>
+        <div class="story-steps">
+            <p id="battleText">1. राम ने वानर सेना के साथ लंका पर आक्रमण किया।<br>2. विभीषण ने राम की सहायता
+                की।<br>3.
+                अब देखिए बाण का चमत्कार!</p>
+        </div>
+    </section>
+
+    <!-- Victory -->
+    <section id="fireworks">
+        <h2>🎉 राम की विजय! 🎉</h2>
+        <div class="image-gallery" id="victoryGallery">
+            <img src="rrr.jpg" alt="Ram Victory" class="victory-img ram-victory">
+            <img src="rr.jpg" alt="Victory Scene" class="gallery-img">
+        </div>
+        <p>राम ने रावण का संहार किया! यह विजय हमें सिखाती है कि धैर्य और सत्य से हर बाधा पार की जा सकती है।</p>
+        <div class="quote-box">
+            <blockquote>"जय श्री राम! बुराई पर अच्छाई की हमेशा जीत होती है।"</blockquote>
+            <p><em>"Jai Shri Ram! Good always triumphs over evil."</em></p>
+        </div>
+        <button onclick="nextSection('fireworks', 'final')">अंतिम संदेश</button>
+    </section>
+
+    <!-- Final - Personalized Message -->
+    <section id="final">
+        <div class="diyas-container final-diyas">
+            <div class="diya left enhanced-diya"></div>
+            <div class="diya center enhanced-diya"></div>
+            <div class="diya right enhanced-diya"></div>
+            <div class="diya extra enhanced-diya"></div>
+            <div class="diya extra2 enhanced-diya"></div>
+            <div class="diya floating enhanced-diya"></div>
+        </div>
+        <h1>✨ शुभ दशहरा 2025: अच्छाई की अमर विजय, Kapish Kashyap की तरफ से! ✨</h1>
+        <div class="wishes-list">
+            <h3>Kapish Kashyap की तरफ से दशहरा की हार्दिक शुभकामनाएं:</h3>
+            <ul>
+                <li>"दशहरा की शुभकामनाएं! आपकी सभी चिंताएं रावण की तरह जल जाएं और खुशियों की बारिश हो।"</li>
+                <li>"May this Dussehra burn all your worries and bring loads of happiness!"</li>
+                <li>"May your life shine as bright as the Dussehra lights. Happy Dussehra!"</li>
+                <li>"इस विशेष अवसर पर आपके सभी सपने पूरे हों। जय श्री राम!"</li>
+            </ul>
+            <p>इस त्योहार पर परिवार के साथ खुशियां मनाएं, मिठाई बांटें और राम राज्य का सपना देखें।</p>
+        </div>
+       
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Audio Functionality (Start on first interaction)
+        const audio = document.getElementById('backgroundMusic');
+        const audioToggle = document.getElementById('audioToggle');
+        let isPlaying = false;
+
+        // Start audio on first user interaction (any click)
+        document.addEventListener('click', function startAudio() {
+            audio.play().catch(e => console.log('Autoplay prevented:', e));
+            if (!audio.muted) {
+                audio.muted = false; // Ensure unmuted
+            }
+            isPlaying = true;
+            audioToggle.textContent = '🔊'; // Show volume icon
+            document.removeEventListener('click', startAudio); // Remove listener after first click
+        }, { once: true });
+
+        // Toggle functionality
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent triggering the start listener
+            if (audio.paused || audio.muted) {
+                audio.play().catch(e => console.log('Play failed:', e));
+                audio.muted = false;
+                isPlaying = true;
+                audioToggle.textContent = '🔊';
+            } else {
+                audio.pause();
+                audio.muted = true;
+                isPlaying = false;
+                audioToggle.textContent = '🔇';
+            }
+        });
+
+        // Optional: Resume on visibility change (if tab is backgrounded)
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && isPlaying) {
+                audio.play().catch(e => {});
+            }
+        });
+    </script>
+</body>
+
+</html>
