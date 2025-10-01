@@ -31,7 +31,7 @@ header {
     top: 0; 
     width: 100%; 
     background: rgba(0,0,0,0.7); 
-    padding: 10px 20px; 
+    padding: 10px 15px; /* Reduced padding for mobile */
     text-align: right; 
     z-index: 1000; /* Increased z-index to stay above all elements */
     backdrop-filter: blur(10px); 
@@ -39,23 +39,24 @@ header {
     justify-content: space-between; 
     align-items: center;
     box-shadow: 0 4px 20px rgba(255,107,53,0.3); /* Neon shadow */
+    will-change: transform; /* Optimize for mobile scrolling */
 }
 
 .sidebar { 
     display: flex; 
-    gap: 10px; 
+    gap: 8px; /* Reduced gap for smaller screens */
 }
 
 .sidebar button { 
     background: rgba(255,255,255,0.2); 
     color: white; 
     border: 1px solid #ffd700; 
-    padding: 8px 12px; 
-    border-radius: 25px; 
+    padding: 6px 10px; /* Smaller padding */
+    border-radius: 20px; /* Slightly smaller radius */
     cursor: pointer; 
-    font-size: 12px; 
+    font-size: 11px; /* Smaller font */
     transition: all 0.3s ease; 
-    box-shadow: 0 0 10px rgba(255,215,0,0.5); 
+    box-shadow: 0 0 5px rgba(255,215,0,0.5); /* Lighter shadow */
     position: relative;
     overflow: hidden;
 }
@@ -78,18 +79,18 @@ header {
 .sidebar button:hover { 
     background: #ffd700; 
     transform: scale(1.05) translateY(-2px); 
-    box-shadow: 0 0 20px #ffd700, 0 4px 15px rgba(255,215,0,0.4);
+    box-shadow: 0 0 10px #ffd700, 0 4px 10px rgba(255,215,0,0.4); /* Reduced shadow */
 }
 
 #toggle { 
     background: linear-gradient(45deg, #ff6b35, #ffd700); 
     color: white; 
     border: none; 
-    padding: 10px 18px; 
+    padding: 8px 14px; /* Smaller */
     cursor: pointer; 
-    border-radius: 25px; 
-    font-size: 14px; 
-    box-shadow: 0 0 15px #ff6b35; 
+    border-radius: 20px; 
+    font-size: 13px; 
+    box-shadow: 0 0 10px #ff6b35; /* Lighter */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -112,7 +113,7 @@ header {
 
 #toggle:hover { 
     transform: rotate(180deg) scale(1.05); 
-    box-shadow: 0 0 25px #ffd700;
+    box-shadow: 0 0 15px #ffd700;
 }
 
 section { 
@@ -121,7 +122,7 @@ section {
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    padding: 80px 20px 40px; /* Added top padding for fixed header */
+    padding: 70px 15px 50px; /* Adjusted for mobile header */
     opacity: 0; 
     transform: translateY(50px); 
     transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
@@ -139,60 +140,60 @@ section:not(.active) {
 
 h1, h2 { 
     font-family: 'Dancing Script', cursive; 
-    font-size: clamp(2.5em, 6vw, 5em); 
+    font-size: clamp(2em, 5vw, 4em); /* Smaller clamp for mobile */
     text-align: center; 
-    margin-bottom: 20px; 
-    text-shadow: 0 0 30px #ffd700, 0 0 40px #ff6b35; 
-    letter-spacing: 3px; 
+    margin-bottom: 15px; 
+    text-shadow: 0 0 20px #ffd700, 0 0 30px #ff6b35; /* Reduced shadow */
+    letter-spacing: 2px; 
     animation: neonGlow 2s ease-in-out infinite alternate;
     position: relative;
 }
 
 @keyframes neonGlow { 
     from { 
-        text-shadow: 0 0 20px #ffd700, 0 0 30px #ff6b35, 0 0 40px rgba(255,215,0,0.5); 
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ff6b35; /* Simplified */
     } 
     to { 
-        text-shadow: 0 0 40px #ffd700, 0 0 50px #ff6b35, 0 0 60px rgba(255,215,0,0.7); 
+        text-shadow: 0 0 30px #ffd700, 0 0 40px #ff6b35; 
     } 
 }
 
 p { 
-    font-size: 1.2em; 
+    font-size: 1em; /* Reduced from 1.2em */
     text-align: center; 
-    margin-bottom: 20px; 
-    max-width: 700px; 
-    line-height: 1.6; 
+    margin-bottom: 15px; 
+    max-width: 90%; /* Better for small screens */
+    line-height: 1.5; 
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
 }
 
 img { 
-    max-width: 300px; 
+    max-width: 250px; /* Smaller max */
     height: auto; 
-    border-radius: 20px; 
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,0,0.5); 
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.3); /* Lighter */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster transition */
 }
 
 .character-img, .victory-img, .battle-img, .gallery-img { 
-    transition: transform 0.5s ease; 
+    transition: transform 0.3s ease; 
 }
 
 img:hover { 
-    transform: scale(1.1) rotate(3deg); 
-    box-shadow: 0 12px 24px rgba(0,0,0,0.6), 0 0 40px #ffd700, 0 0 50px rgba(255,107,53,0.5);
+    transform: scale(1.05) rotate(2deg); /* Milder */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4), 0 0 30px #ffd700;
 }
 
 button { 
     background: linear-gradient(45deg, #ff6b35, #ffd700); 
     color: white; 
     border: none; 
-    padding: 15px 40px; 
-    font-size: 1.1em; 
-    border-radius: 50px; 
+    padding: 12px 30px; /* Smaller */
+    font-size: 1em; 
+    border-radius: 40px; 
     cursor: pointer; 
     transition: all 0.3s ease; 
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 20px rgba(255,215,0,0.5);
+    box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255,215,0,0.3); /* Lighter */
     font-family: 'Poppins', sans-serif; 
     position: relative; 
     overflow: hidden;
@@ -202,13 +203,13 @@ button {
 
 @keyframes buttonPulse { 
     0% { 
-        box-shadow: 0 0 0 0 rgba(255,215,0,0.7), 0 4px 15px rgba(255,107,53,0.4); 
+        box-shadow: 0 0 0 0 rgba(255,215,0,0.5), 0 2px 10px rgba(255,107,53,0.3); 
     } 
     70% { 
-        box-shadow: 0 0 0 20px rgba(255,215,0,0), 0 8px 25px rgba(255,107,53,0.6); 
+        box-shadow: 0 0 0 10px rgba(255,215,0,0), 0 4px 15px rgba(255,107,53,0.4); /* Reduced radius */
     } 
     100% { 
-        box-shadow: 0 0 0 0 rgba(255,215,0,0), 0 4px 15px rgba(255,107,53,0.4); 
+        box-shadow: 0 0 0 0 rgba(255,215,0,0), 0 2px 10px rgba(255,107,53,0.3); 
     } 
 }
 
@@ -219,7 +220,7 @@ button::before {
     left: -100%; 
     width: 100%; 
     height: 100%; 
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); 
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); 
     transition: left 0.5s;
 }
 
@@ -228,8 +229,8 @@ button:hover::before {
 }
 
 button:hover { 
-    transform: translateY(-5px) scale(1.02); 
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.7), 0 0 30px #ffd700, 0 0 40px rgba(255,107,53,0.5);
+    transform: translateY(-3px) scale(1.01); /* Milder lift */
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5), 0 0 25px #ffd700;
 }
 
 /* Enhanced Diyas (Modernized with better positioning) */
@@ -241,7 +242,8 @@ button:hover {
     justify-content: space-around; 
     z-index: 1; /* Low z-index to stay below content */
     pointer-events: none; /* Prevent interference with buttons */
-    padding-bottom: 20px;
+    padding-bottom: 10px; /* Reduced */
+    will-change: transform; /* Optimize animation */
 }
 
 .home-diyas, .final-diyas { 
@@ -249,40 +251,40 @@ button:hover {
 }
 
 .diya { 
-    width: 60px; 
-    height: 80px; 
+    width: 50px; /* Smaller */
+    height: 70px; 
     background: linear-gradient(to bottom, #ff8c00, #d2691e, #8b4513); 
-    border-radius: 30px 30px 10px 10px; 
+    border-radius: 25px 25px 8px 8px; 
     position: relative; 
     animation: flicker 2s infinite alternate, float 3s ease-in-out infinite, waxMelt 10s linear infinite;
-    margin: 0 10px; 
-    box-shadow: 0 0 20px #ff4500, inset 0 2px 4px rgba(255,255,255,0.2);
+    margin: 0 5px; /* Reduced */
+    box-shadow: 0 0 10px #ff4500; /* Lighter */
 }
 
 .enhanced-diya::after { /* Flame */
     content: ''; 
     position: absolute; 
-    top: -10px; 
+    top: -8px; 
     left: 50%; 
     transform: translateX(-50%); 
-    width: 15px; 
-    height: 25px; 
+    width: 12px; 
+    height: 20px; 
     background: linear-gradient(to top, #ff4500, #ffff00, #ffd700); 
     border-radius: 50% 50% 0 0; 
     animation: flameFlicker 0.5s infinite alternate, move 1s linear infinite;
-    box-shadow: 0 0 10px #ffff00, 0 0 15px #ff4500;
+    box-shadow: 0 0 5px #ffff00;
 }
 
 @keyframes flameFlicker { 
     0% { 
         transform: translateX(-50%) scaleY(1) rotate(0deg); 
         opacity: 1; 
-        box-shadow: 0 0 5px #ffff00; 
+        box-shadow: 0 0 3px #ffff00; 
     } 
     100% { 
         transform: translateX(-52%) scaleY(1.2) rotate(2deg); 
         opacity: 0.9; 
-        box-shadow: 0 0 15px #ff4500; 
+        box-shadow: 0 0 8px #ff4500; 
     } 
 }
 
@@ -297,12 +299,12 @@ button:hover {
 
 @keyframes waxMelt { 
     0% { 
-        height: 80px; 
+        height: 70px; 
     } 
     100% { 
-        height: 75px; 
+        height: 65px; 
     } 
-} /* Subtle melt */
+}
 
 .diya.floating { 
     position: fixed; 
@@ -323,22 +325,22 @@ button:hover {
 .diya::before { 
     content: ''; 
     position: absolute; 
-    top: -15px; 
+    top: -12px; 
     left: 50%; 
     transform: translateX(-50%); 
-    width: 20px; 
-    height: 30px; 
+    width: 16px; 
+    height: 25px; 
     background: #ffd700; 
     border-radius: 50% 50% 0 0; 
-    box-shadow: inset 2px 3px 4px rgba(0,0,0,0.2);
+    box-shadow: inset 1px 2px 3px rgba(0,0,0,0.2);
 }
 
 @keyframes flicker { 
     0%, 100% { 
-        box-shadow: 0 0 10px #ff8c00, inset 0 0 5px rgba(255,255,255,0.3); 
+        box-shadow: 0 0 5px #ff8c00; 
     } 
     50% { 
-        box-shadow: 0 0 30px #ff4500, inset 0 0 10px #ffd700; 
+        box-shadow: 0 0 15px #ff4500; 
     } 
 }
 
@@ -347,7 +349,7 @@ button:hover {
         transform: translateY(0px); 
     } 
     50% { 
-        transform: translateY(-15px); 
+        transform: translateY(-10px); /* Reduced */
     } 
 }
 
@@ -356,13 +358,13 @@ button:hover {
         transform: translate(0, 0) rotate(0deg); 
     } 
     25% { 
-        transform: translate(20px, -20px) rotate(5deg); 
+        transform: translate(10px, -10px) rotate(3deg); /* Milder */
     } 
     50% { 
-        transform: translate(0, -40px) rotate(0deg); 
+        transform: translate(0, -20px) rotate(0deg); 
     } 
     75% { 
-        transform: translate(-20px, -20px) rotate(-5deg); 
+        transform: translate(-10px, -10px) rotate(-3deg); 
     } 
     100% { 
         transform: translate(0, 0) rotate(0deg); 
@@ -382,12 +384,12 @@ button:hover {
 
 .lantern { 
     position: absolute; 
-    width: 20px; 
-    height: 40px; 
+    width: 15px; /* Smaller */
+    height: 30px; 
     background: radial-gradient(circle, #ffd700, #ff8c00); 
     border-radius: 50%; 
     animation: floatUp 6s linear infinite; 
-    box-shadow: 0 0 20px #ffd700, 0 0 30px rgba(255,215,0,0.3);
+    box-shadow: 0 0 10px #ffd700; /* Lighter */
 }
 
 .lantern:nth-child(1) { 
@@ -438,8 +440,8 @@ button:hover {
 
 .firework { 
     position: absolute; 
-    width: 4px; 
-    height: 4px; 
+    width: 3px; 
+    height: 3px; 
     background: #ffd700; 
     border-radius: 50%; 
     animation: explode 2s ease-out forwards;
@@ -463,25 +465,25 @@ button:hover {
 /* Image Gallery (Modern grid) */
 .image-gallery { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    gap: 20px; 
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller minmax */
+    gap: 15px; 
     justify-content: center; 
-    margin: 20px 0; 
+    margin: 15px 0; 
     position: relative; 
-    max-width: 800px;
+    max-width: 100%; /* Full width on mobile */
 }
 
 .gallery-img { 
     width: 100%; 
-    animation: slideIn 1s ease-out; 
+    animation: slideIn 0.8s ease-out; /* Faster */
     transform: translateZ(0); 
-    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+    box-shadow: 0 0 10px rgba(255,215,0,0.2); /* Lighter */
 }
 
 @keyframes slideIn { 
     from { 
         opacity: 0; 
-        transform: translateX(-50px); 
+        transform: translateX(-30px); 
     } 
     to { 
         opacity: 1; 
@@ -492,26 +494,26 @@ button:hover {
 /* Boxes - Enhanced Glassmorphism */
 .quote-box, .fact-box { 
     background: rgba(255,255,255,0.1); 
-    padding: 25px; 
-    border-radius: 25px; 
-    margin: 20px 0; 
-    backdrop-filter: blur(15px); 
-    border: 1px solid rgba(255,215,0,0.3); 
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+    padding: 20px; /* Smaller */
+    border-radius: 20px; 
+    margin: 15px 0; 
+    backdrop-filter: blur(10px); /* Reduced blur */
+    border: 1px solid rgba(255,215,0,0.2); 
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2); /* Lighter */
     transition: all 0.3s ease;
 }
 
 .quote-box:hover, .fact-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.2);
+    transform: translateY(-3px); /* Milder */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 .quote-box blockquote { 
     font-family: 'Dancing Script', cursive; 
-    font-size: 1.5em; 
+    font-size: 1.3em; /* Smaller */
     font-style: italic; 
     text-align: center; 
-    margin-bottom: 10px; 
+    margin-bottom: 8px; 
     color: #ffd700; 
 }
 
@@ -521,8 +523,8 @@ button:hover {
 }
 
 .fact-box li { 
-    margin: 10px 0; 
-    padding-left: 20px; 
+    margin: 8px 0; 
+    padding-left: 15px; 
     position: relative; 
     transition: color 0.3s ease;
 }
@@ -555,18 +557,18 @@ button:hover {
 .battle-arena { 
     position: relative; 
     width: 100%; 
-    height: 50vh; 
+    height: 40vh; /* Reduced height for mobile */
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    margin: 20px 0; 
+    margin: 15px 0; 
 }
 
 .battle-img { 
     position: relative; 
     z-index: 2; 
-    max-width: 250px; 
-    filter: drop-shadow(0 0 10px #ffd700); 
+    max-width: 200px; /* Smaller */
+    filter: drop-shadow(0 0 5px #ffd700); /* Lighter */
 }
 
 .ram-battle { 
@@ -578,7 +580,7 @@ button:hover {
         transform: rotate(0); 
     } 
     50% { 
-        transform: rotate(-10deg) scale(1.05); 
+        transform: rotate(-5deg) scale(1.03); /* Milder */
     } 
 }
 
@@ -592,8 +594,8 @@ button:hover {
         filter: hue-rotate(0deg); 
     } 
     50% { 
-        transform: scale(1.1); 
-        filter: hue-rotate(20deg) brightness(1.2); 
+        transform: scale(1.05); 
+        filter: hue-rotate(10deg) brightness(1.1); /* Milder filter */
     } 
 }
 
@@ -601,13 +603,13 @@ button:hover {
     position: absolute; 
     top: 50%; 
     left: 20%; 
-    width: 4px; 
-    height: 60px; 
+    width: 3px; 
+    height: 50px; 
     background: linear-gradient(to right, transparent, #ffd700, transparent); 
     transform: rotate(45deg); 
     opacity: 0; 
     z-index: 3; 
-    box-shadow: 0 0 10px #ffd700;
+    box-shadow: 0 0 5px #ffd700;
 }
 
 @keyframes shootArrow { 
@@ -619,12 +621,12 @@ button:hover {
     to { 
         left: 70%; 
         opacity: 0; 
-        transform: rotate(45deg) translateX(300px) scale(1.5); 
+        transform: rotate(45deg) translateX(200px) scale(1.2); /* Reduced distance */
     } 
 }
 
 .ravan-fall { 
-    animation: fallAndBurn 3s ease-in forwards; 
+    animation: fallAndBurn 2s ease-in forwards; /* Faster */
 }
 
 @keyframes fallAndBurn { 
@@ -634,24 +636,24 @@ button:hover {
         filter: brightness(1); 
     } 
     70% { 
-        transform: translateY(100px) rotate(90deg); 
-        filter: brightness(2) sepia(0.5); 
+        transform: translateY(50px) rotate(45deg); /* Milder */
+        filter: brightness(1.5) sepia(0.3); 
     } 
     100% { 
-        transform: translateY(200px) rotate(180deg); 
+        transform: translateY(100px) rotate(90deg); 
         opacity: 0; 
-        filter: brightness(3) sepia(1) hue-rotate(180deg); 
+        filter: brightness(2) sepia(0.5) hue-rotate(90deg); 
     } 
 }
 
 .story-steps { 
     text-align: center; 
-    font-size: 1.1em; 
+    font-size: 1em; 
     background: rgba(0,0,0,0.5); 
-    padding: 20px; 
-    border-radius: 15px; 
-    box-shadow: 0 0 20px rgba(255,107,53,0.5); 
-    margin: 20px 0;
+    padding: 15px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 10px rgba(255,107,53,0.3); 
+    margin: 15px 0;
 }
 
 /* Victory (Added confetti-like sparks) */
@@ -664,17 +666,17 @@ button:hover {
         transform: rotate(0) translateY(0); 
     } 
     25% { 
-        transform: rotate(5deg) translateY(-10px) scale(1.05); 
+        transform: rotate(3deg) translateY(-5px) scale(1.03); /* Milder */
     } 
     75% { 
-        transform: rotate(-5deg) translateY(-10px) scale(1.05); 
+        transform: rotate(-3deg) translateY(-5px) scale(1.03); 
     } 
 }
 
 .confetti {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background: #ffd700;
     animation: confettiFall 3s linear infinite;
 }
@@ -713,37 +715,37 @@ button:hover {
 /* Wishes & Share */
 .wishes-list { 
     background: rgba(255,255,255,0.1); 
-    padding: 25px; 
-    border-radius: 25px; 
-    margin: 20px 0; 
-    max-width: 600px; 
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
+    padding: 20px; 
+    border-radius: 20px; 
+    margin: 15px 0; 
+    max-width: 95%; 
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2); 
     transition: all 0.3s ease;
 }
 
 .wishes-list:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 .share-buttons { 
     display: flex; 
-    gap: 20px; 
+    gap: 15px; 
     justify-content: center;
 }
 
 .share-buttons button { 
     background: linear-gradient(45deg, #4CAF50, #8BC34A); 
-    box-shadow: 0 0 20px #4CAF50; 
-    padding: 12px 25px;
-    font-size: 1em;
+    box-shadow: 0 0 10px #4CAF50; 
+    padding: 10px 20px; /* Smaller */
+    font-size: 0.9em;
 }
 
 footer { 
     background: rgba(0,0,0,0.8); 
     text-align: center; 
-    padding: 20px; 
-    box-shadow: 0 -4px 20px rgba(255,107,53,0.3); 
+    padding: 15px; 
+    box-shadow: 0 -2px 10px rgba(255,107,53,0.3); 
     margin-top: auto;
 }
 
@@ -756,26 +758,78 @@ footer {
     pointer-events: none; 
 }
 
-/* Responsive */
+/* Enhanced Responsive - More breakpoints for better mobile */
 @media (max-width: 768px) { 
     .image-gallery { 
         grid-template-columns: 1fr; 
+        gap: 10px;
     } 
     .sidebar { 
         flex-wrap: wrap; 
         justify-content: center;
+        gap: 5px;
     } 
     .share-buttons { 
         flex-direction: column; 
         align-items: center;
+        gap: 10px;
     } 
     .diyas-container {
-        flex-direction: column;
-        align-items: center;
-        bottom: 10px;
+        flex-direction: row; /* Keep row but space-around for small screens */
+        justify-content: space-evenly;
+        bottom: 5px;
+        position: absolute; /* Change to absolute in sections to avoid fixed scroll issues */
     }
     .diya {
-        margin: 5px;
+        margin: 2px;
+        width: 40px;
+        height: 60px;
+    }
+    header {
+        padding: 8px 10px;
+        backdrop-filter: blur(5px); /* Reduced blur */
+    }
+    section {
+        padding: 60px 10px 30px;
+    }
+}
+
+@media (max-width: 480px) { 
+    /* Disable heavy animations on small phones */
+    body {
+        animation: none; /* No gradient shift */
+        background: linear-gradient(-45deg, #0f0c29, #ff6b35); /* Simpler gradient */
+    }
+    h1, h2 {
+        animation: none; /* No neon glow */
+        text-shadow: 0 0 10px #ffd700;
+    }
+    button {
+        animation: none; /* No pulse */
+    }
+    .diya {
+        animation: flicker 2s infinite alternate; /* Only flicker, no float/wax */
+    }
+    .lantern {
+        display: none; /* Hide lanterns on very small screens */
+    }
+    .clouds {
+        display: none; /* Hide clouds */
+    }
+    .rangoli {
+        display: none; /* Hide rangoli */
+    }
+    /* Reduce fixed elements */
+    .diyas-container {
+        position: absolute;
+        z-index: 1;
+    }
+    .fireworks {
+        z-index: 5; /* Adjust if needed */
+    }
+    /* Optimize transforms */
+    img:hover, button:hover {
+        transform: none; /* Disable hover on touch devices */
     }
 }
 
@@ -791,24 +845,24 @@ footer {
 }
 
 .arrow-shaft {
-    width: 100px; 
-    height: 4px; 
+    width: 80px; /* Smaller */
+    height: 3px; 
     background: linear-gradient(to right, #ffd700, #ff8c00); 
     border-radius: 2px; 
-    box-shadow: 0 0 10px #ffd700;
+    box-shadow: 0 0 5px #ffd700;
 }
 
 .arrow-head {
     position: absolute; 
-    right: -10px; 
+    right: -8px; 
     top: 50%; 
     transform: translateY(-50%);
     width: 0; 
     height: 0; 
-    border-left: 15px solid transparent; 
-    border-right: 15px solid transparent;
-    border-bottom: 10px solid #ffd700; 
-    box-shadow: 0 0 10px #ffd700;
+    border-left: 12px solid transparent; 
+    border-right: 12px solid transparent;
+    border-bottom: 8px solid #ffd700; 
+    box-shadow: 0 0 5px #ffd700;
 }
 
 @keyframes shootArrow {
@@ -816,30 +870,30 @@ footer {
         left: 25%; 
         opacity: 1; 
         transform: translateY(-50%) scale(1); 
-        box-shadow: 0 0 5px #ffd700;
+        box-shadow: 0 0 3px #ffd700;
     }
     50% { 
         left: 50%; 
         opacity: 1; 
-        transform: translateY(-50%) scale(1.2); 
-        box-shadow: 0 0 20px #ffd700, 0 0 30px #ff4500;
+        transform: translateY(-50%) scale(1.1); 
+        box-shadow: 0 0 10px #ffd700;
     }
     100% { 
         left: 70%; 
         opacity: 0; 
-        transform: translateY(-50%) scale(1.5) rotate(5deg); 
-        box-shadow: 0 0 30px #ffd700;
+        transform: translateY(-50%) scale(1.3) rotate(3deg); 
+        box-shadow: 0 0 15px #ffd700;
     }
 }
 
 /* Sparks for Trail (Optional - JS se add honge) */
 .spark {
     position: absolute; 
-    width: 3px; 
-    height: 3px; 
+    width: 2px; 
+    height: 2px; 
     background: #ffd700; 
     border-radius: 50%;
-    animation: sparkFade 1s ease-out forwards;
+    animation: sparkFade 0.8s ease-out forwards; /* Faster */
 }
 
 @keyframes sparkFade {
@@ -849,14 +903,14 @@ footer {
     }
     100% { 
         opacity: 0; 
-        transform: scale(0) translateY(-20px); 
+        transform: scale(0) translateY(-10px); 
     }
 }
 
 /* Additional Dussehra Animations: Ravan Effigy Burn Effect */
 .ravan-effigy {
     position: relative;
-    animation: burnEffect 4s ease-in forwards;
+    animation: burnEffect 3s ease-in forwards; /* Faster */
 }
 
 @keyframes burnEffect {
@@ -865,12 +919,12 @@ footer {
         transform: scale(1);
     }
     50% {
-        filter: brightness(1.5) sepia(0.3) hue-rotate(20deg);
-        transform: scale(1.05);
+        filter: brightness(1.2) sepia(0.2); /* Milder */
+        transform: scale(1.02);
     }
     100% {
-        filter: brightness(2) sepia(0.8) hue-rotate(180deg);
-        transform: scale(0.8);
+        filter: brightness(1.5) sepia(0.5) hue-rotate(90deg);
+        transform: scale(0.9);
         opacity: 0;
     }
 }
@@ -881,9 +935,9 @@ footer {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);
+    width: 150px; /* Smaller */
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,215,0,0.2), transparent);
     border-radius: 50%;
     animation: rangoliRotate 10s linear infinite;
     z-index: 0;
