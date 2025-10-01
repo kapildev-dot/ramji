@@ -27,28 +27,39 @@
     <!-- Local Song Autoplay Audio (Muted initially for policy compliance) -->
     <audio id="backgroundMusic" loop autoplay muted>
         <source src="123.mp3" type="audio/mpeg">
-       
     </audio>
 
-    <!-- Audio Controls (Toggle for mute/unmute and play/pause) -->
-
-<button id="audioToggle" style="
-    position: fixed; 
-    bottom: 20px; 
-    left: 20px; 
-    z-index: 100; 
-    background: linear-gradient(45deg, #ff6b35, #ffd700); 
-    border: none; 
-    border-radius: 50%; 
-    width: 70px; 
-    height: 70px; 
-    cursor: pointer; 
-    font-size: 28px; 
-    color: white; 
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
-">
-    🔊
-</button>
+    <!-- Audio Controls Container -->
+    <div id="audioControls" style="
+        position: fixed; 
+        bottom: 20px; 
+        left: 20px; 
+        z-index: 100; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 5px;
+    ">
+        <span style="
+            color: white; 
+            font-weight: bold; 
+            font-size: 14px; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        ">CLICK ME</span>
+        <button id="audioToggle" style="
+            background: linear-gradient(45deg, #ff6b35, #ffd700); 
+            border: none; 
+            border-radius: 50%; 
+            width: 140px; 
+            height: 100px; 
+            cursor: pointer; 
+            font-size: 28px; 
+            color: white; 
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        ">
+            🔊
+        </button>
+    </div>
 
     
     <canvas id="fireworks-canvas"></canvas>
