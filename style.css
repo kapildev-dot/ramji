@@ -117,16 +117,17 @@ header {
 }
 
 section { 
-    min-height: 100vh; 
+    min-height: calc(100vh - 80px); /* Reduced min-height to account for header, no extra blank */
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
+    justify-content: flex-start; /* Start from top instead of center to reduce blank */
     align-items: center; 
-    padding: 70px 15px 50px; /* Adjusted for mobile header */
+    padding: 80px 15px 30px; /* Reduced bottom padding, top for header */
     opacity: 0; 
     transform: translateY(50px); 
     transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
     position: relative;
+    margin-top: 0; /* Ensure no extra margin */
 }
 
 section.active { 
@@ -143,6 +144,7 @@ h1, h2 {
     font-size: clamp(2em, 5vw, 4em); /* Smaller clamp for mobile */
     text-align: center; 
     margin-bottom: 15px; 
+    margin-top: 10px; /* Small top margin to push down from edge */
     text-shadow: 0 0 20px #ffd700, 0 0 30px #ff6b35; /* Reduced shadow */
     letter-spacing: 2px; 
     animation: neonGlow 2s ease-in-out infinite alternate;
@@ -199,6 +201,7 @@ button {
     overflow: hidden;
     animation: buttonPulse 2s infinite;
     z-index: 10; /* Ensure buttons are above decorative elements */
+    margin: 10px 0; /* Add margin to buttons for spacing */
 }
 
 @keyframes buttonPulse { 
@@ -790,7 +793,8 @@ footer {
         backdrop-filter: blur(5px); /* Reduced blur */
     }
     section {
-        padding: 60px 10px 30px;
+        padding: 70px 10px 20px; /* Further reduced bottom padding */
+        min-height: calc(100vh - 60px); /* Adjust for smaller header */
     }
 }
 
@@ -830,6 +834,18 @@ footer {
     /* Optimize transforms */
     img:hover, button:hover {
         transform: none; /* Disable hover on touch devices */
+    }
+    section {
+        padding: 60px 10px 10px; /* Minimal bottom padding */
+        min-height: auto; /* Auto height to fit content, no extra length */
+    }
+    .fact-box, .quote-box {
+        margin: 10px 0;
+        padding: 15px;
+    }
+    .image-gallery {
+        margin: 10px 0;
+        gap: 5px;
     }
 }
 
